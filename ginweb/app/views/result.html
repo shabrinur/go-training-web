@@ -1,30 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width-device-width, initial-scale-1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie-edge">
-        <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
-        <title>{{ .title}}</title>
-    </head>
-    <body>
-        <div style="text-align: center;">
-            <h1>{{ .title}}</h1>
-        </div>
+{{define "content"}}
+    <h1>Welcome to Result Page</h1>
+    <p>This page is showing result for {{ .formName }} :)</p>
 
-        <!-- Show Result -->
-        <div class="container">
-            <div class="mb-3">
-                <label for="result1" class="form-label">Result 1</label>
-                <input type="text" class="form-control" id="result1" value="{{ .input1}}" readonly>
-            </div>
-            <div class="mb-3">
-                <label for="result2" class="form-label">Result 2</label>
-                <input type="text" class="form-control" id="result2" value="{{ .input2}}" readonly>
-            </div>
-            <div class="mb-4">
-                <a class="btn btn-primary mt-4" href="/">Back To Index</a>
-            </div>
+    <!-- Show Result -->
+    <div class="container">
+        <div class="mb-3">
+            <label for="result1" class="form-label">Result 1</label>
+            <input type="text" class="form-control" id="result1" value="{{ .input1}}" readonly>
         </div>
-    </body>
-</html>
+        <div class="mb-3">
+            <label for="result2" class="form-label">Result 2</label>
+            <input type="text" class="form-control" id="result2" value="{{ .input2}}" readonly>
+        </div>
+        <div class="mb-4">
+            <a class="btn btn-primary mt-4" href="/">Back To Index Page</a>
+        </div>
+    </div>
+{{end}}
+
+{{define "script"}}
+{{end}}

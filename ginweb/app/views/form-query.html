@@ -1,0 +1,22 @@
+{{define "content"}}
+    <h1>Welcome to Form B</h1>
+    <p>This form will submit value through query parameters :)</p>
+    
+    <!-- Send Value on Query Param -->
+    <form class="container" action="/result" method="GET">
+        <div class="mb-3">
+            <label for="input1B" class="form-label">Input 1-B</label>
+            <input type="text" class="form-control" id="input1B" name="input1B" placeholder="Type value for 1-B here">
+        </div>
+        <div class="mb-3">
+            <label for="input2B" class="form-label">Input 2-B</label>
+            <input type="text" class="form-control" id="input2B" name="input2B" placeholder="Type value for 2-B here">
+        </div>
+        <div class="mb-4">
+            <button type="submit" class="btn btn-primary mt-4">Send On Query Param</button>
+        </div>
+    </form>
+{{end}}
+
+{{define "script"}}
+{{end}}

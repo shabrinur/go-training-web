@@ -2,54 +2,34 @@ package controllers
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
 
-func Index(c *gin.Context) {
+func ShowIndex(c *gin.Context) {
 	info := gin.H{
-		"title":       "Gin Web Apps",
-		"description": "Hello World! :)",
+		"title": "Index",
+		"year":  time.Now().Year(),
 	}
 
-	c.HTML(http.StatusOK, "index.html", info)
+	c.HTML(http.StatusOK, "index", info)
 }
 
-func ResultValueOnBody(c *gin.Context) {
-	input1 := c.PostForm("input1A")
-	input2 := c.PostForm("input2A")
-
-	result := gin.H{
-		"title":  "Gin Web Apps - Show Result Value On Body",
-		"input1": input1,
-		"input2": input2,
+func ShowAbout(c *gin.Context) {
+	info := gin.H{
+		"title": "About",
+		"year":  time.Now().Year(),
 	}
 
-	c.HTML(http.StatusOK, "result.html", result)
+	c.HTML(http.StatusOK, "about", info)
 }
 
-func ResultValueOnQueryParam(c *gin.Context) {
-	input1 := c.Query("input1B")
-	input2 := c.Query("input2B")
-
-	result := gin.H{
-		"title":  "Gin Web Apps - Show Result Value On Query Param",
-		"input1": input1,
-		"input2": input2,
+func ShowContact(c *gin.Context) {
+	info := gin.H{
+		"title": "Contact",
+		"year":  time.Now().Year(),
 	}
 
-	c.HTML(http.StatusOK, "result.html", result)
-}
-
-func ResultValueOnPathParam(c *gin.Context) {
-	input1 := c.Param("input1")
-	input2 := c.Param("input2")
-
-	result := gin.H{
-		"title":  "Gin Web Apps - Show Result Value On Path Param",
-		"input1": input1,
-		"input2": input2,
-	}
-
-	c.HTML(http.StatusOK, "result.html", result)
+	c.HTML(http.StatusOK, "contact", info)
 }

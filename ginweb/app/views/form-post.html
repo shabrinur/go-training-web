@@ -1,0 +1,22 @@
+{{define "content"}}
+    <h1>Welcome to Form A</h1>
+    <p>This form will submit value through POST request body :)</p>
+    
+    <!-- Send Value on Body -->
+    <form class="container" action="/result" method="POST">
+        <div class="mb-3">
+            <label for="input1A" class="form-label">Input 1-A</label>
+            <input type="text" class="form-control" id="input1A" name="input1A" placeholder="Type value for 1-A here">
+        </div>
+        <div class="mb-3">
+            <label for="input2A" class="form-label">Input 2-A</label>
+            <input type="text" class="form-control" id="input2A" name="input2A" placeholder="Type value for 2-A here">
+        </div>
+        <div class="mb-4">
+            <button type="submit" class="btn btn-primary mt-4">Send On Body</button>
+        </div>
+    </form>
+{{end}}
+
+{{define "script"}}
+{{end}}

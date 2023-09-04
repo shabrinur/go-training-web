@@ -1,69 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width-device-width, initial-scale-1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie-edge">
-        <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
-        <title>{{ .title}}</title>
-    </head>
-    <body>
-        <div style="text-align: center;">
-            <h1>{{ .title}}</h1>
-            <h3>{{ .description}}</h3>
-        </div>
+{{define "content"}}
+    <h1>Welcome to Index Page</h1>
+    <p>This is the landing page! :)</p>
+{{end}}
 
-        <!-- Send Value on Body -->
-        <form class="container" action="/result" method="POST">
-            <div class="mb-3">
-                <label for="input1A" class="form-label">Input 1-A</label>
-                <input type="text" class="form-control" id="input1A" name="input1A" placeholder="Type value for 1-A here">
-            </div>
-            <div class="mb-3">
-                <label for="input2A" class="form-label">Input 2-A</label>
-                <input type="text" class="form-control" id="input2A" name="input2A" placeholder="Type value for 2-A here">
-            </div>
-            <div class="mb-4">
-                <button type="submit" class="btn btn-primary mt-4">Send On Body</button>
-            </div>
-        </form>
-
-        <!-- Send Value on Query Param -->
-        <form class="container" action="/result" method="GET">
-            <div class="mb-3">
-                <label for="input1B" class="form-label">Input 1-B</label>
-                <input type="text" class="form-control" id="input1B" name="input1B" placeholder="Type value for 1-B here">
-            </div>
-            <div class="mb-3">
-                <label for="input2B" class="form-label">Input 2-B</label>
-                <input type="text" class="form-control" id="input2B" name="input2B" placeholder="Type value for 2-B here">
-            </div>
-            <div class="mb-4">
-                <button type="submit" class="btn btn-primary mt-4">Send On Query Param</button>
-            </div>
-        </form>
-
-        <!-- Send Value on Path Param -->
-        <form class="container">
-            <div class="mb-3">
-                <label for="input1C" class="form-label">Input 1-C</label>
-                <input type="text" class="form-control" id="input1C" name="input1C" placeholder="Type value for 1-C here">
-            </div>
-            <div class="mb-3">
-                <label for="input2C" class="form-label">Input 2-C</label>
-                <input type="text" class="form-control" id="input2C" name="input2C" placeholder="Type value for 2-C here">
-            </div>
-            <div class="mb-4">
-                <a type="submit" class="btn btn-primary mt-4" onclick="submitForm()">Send On Path Param</a>
-            </div>
-        </form>
-    </body>
-    <script>
-        function submitForm() {
-            const input1 = document.getElementById('input1C').value;
-            const input2 = document.getElementById('input2C').value;
-            const url = `/result/${input1}/${input2}`;
-            window.location.href = url;
-        }
-    </script>
-</html>
+{{define "script"}}
+{{end}}

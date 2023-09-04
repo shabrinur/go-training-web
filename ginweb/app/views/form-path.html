@@ -1,0 +1,30 @@
+{{define "content"}}
+    <h1>Welcome to Form C</h1>
+    <p>This form will submit value through path parameters :)</p>
+    
+    <!-- Send Value on Path Param -->
+    <form class="container">
+        <div class="mb-3">
+            <label for="input1C" class="form-label">Input 1-C</label>
+            <input type="text" class="form-control" id="input1C" name="input1C" placeholder="Type value for 1-C here">
+        </div>
+        <div class="mb-3">
+            <label for="input2C" class="form-label">Input 2-C</label>
+            <input type="text" class="form-control" id="input2C" name="input2C" placeholder="Type value for 2-C here">
+        </div>
+        <div class="mb-4">
+            <a type="submit" class="btn btn-primary mt-4" onclick="submitForm()">Send On Path Param</a>
+        </div>
+    </form>
+{{end}}
+
+{{define "script"}}
+<script type="text/javascript">
+function submitForm() {
+    const input1 = document.getElementById('input1C').value;
+    const input2 = document.getElementById('input2C').value;
+    const url = `/result/${input1}/${input2}`;
+    window.location.href = url;
+}
+</script>
+{{end}}
