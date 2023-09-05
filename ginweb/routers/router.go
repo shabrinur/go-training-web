@@ -13,14 +13,14 @@ func SetupRouter() *gin.Engine {
 	router.GET("/", controllers.ShowIndex)
 	router.GET("/about", controllers.ShowAbout)
 
-	router.GET("/post", controllers.ShowFormA)
-	router.POST("/result", controllers.ShowResultPost)
+	router.GET("/form/post", controllers.ShowFormA)
+	router.POST("/form/post/result", controllers.ShowResultPost)
 
-	router.GET("/query", controllers.ShowFormB)
-	router.GET("/result", controllers.ShowResultQuery)
+	router.GET("/form/query", controllers.ShowFormB)
+	router.GET("/form/query/result", controllers.ShowResultQuery)
 
-	router.GET("/path", controllers.ShowFormC)
-	router.GET("/result/:input1/:input2", controllers.ShowResultPath)
+	router.GET("/form/path", controllers.ShowFormC)
+	router.GET("/form/path/result/:input1/:input2", controllers.ShowResultPath)
 
 	router.GET("/contact", controllers.ShowContact)
 
