@@ -50,6 +50,8 @@ func setRoutingForToDoPages(r *gin.Engine) *gin.Engine {
 	r.GET("/practice/todo/:todoId/edit", controllers.ShowTodoUpdate)
 	r.POST("/practice/todo/update", controllers.PostTodoUpdate)
 
+	r.POST("/practice/todo/delete", controllers.PostTodoDelete)
+
 	return r
 }
 

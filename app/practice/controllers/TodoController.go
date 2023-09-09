@@ -117,6 +117,22 @@ func PostTodoUpdate(c *gin.Context) {
 	c.Redirect(http.StatusSeeOther, "/practice/todo")
 }
 
+func PostTodoDelete(c *gin.Context) {
+	id := c.PostForm("todoId")
+	val, err := strconv.Atoi(id)
+	if err != nil {
+		errorHandling("PARSE_TODO_ID", err, c)
+		return
+	}
+
+	err = helpers.Delete(val)
+	if err != nil {
+		errorHandling("DELETE_TODO_ENTRY_TO_DB", err, c)
+		return
+	}
+	c.Redirect(http.StatusSeeOther, "/practice/todo")
+}
+
 func errorHandling(process string, err error, c *gin.Context) {
 	errInfo := gin.H{
 		"title":   "Error",
