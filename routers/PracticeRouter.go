@@ -47,6 +47,9 @@ func setRoutingForToDoPages(r *gin.Engine) *gin.Engine {
 
 	r.GET("/practice/todo/:todoId", controllers.ViewTodoDetail)
 
+	r.GET("/practice/todo/:todoId/edit", controllers.ShowTodoUpdate)
+	r.POST("/practice/todo/update", controllers.PostTodoUpdate)
+
 	return r
 }
 
@@ -68,6 +71,7 @@ func renderPracticeTemplates(render multitemplate.Renderer) multitemplate.Render
 	render.AddFromFiles("todo-list", layoutPath, viewPath+"/todo/todo-list.html")
 	render.AddFromFiles("todo-create", layoutPath, viewPath+"/todo/todo-create.html")
 	render.AddFromFiles("todo-detail", layoutPath, viewPath+"/todo/todo-detail.html")
+	render.AddFromFiles("todo-update", layoutPath, viewPath+"/todo/todo-update.html")
 	render.AddFromFiles("todo-error", layoutPath, viewPath+"/todo/todo-error.html")
 
 	render.AddFromFiles("contact", layoutPath, viewPath+"/contact.html")

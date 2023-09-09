@@ -71,6 +71,52 @@ func ViewTodoDetail(c *gin.Context) {
 	c.HTML(http.StatusOK, "todo-detail", content)
 }
 
+func ShowTodoUpdate(c *gin.Context) {
+	id := c.Param("todoId")
+	val, err := strconv.Atoi(id)
+	if err != nil {
+		errorHandling("PARSE_TODO_ID", err, c)
+		return
+	}
+
+	todo, err := helpers.Get(val)
+	if err != nil {
+		errorHandling("GET_TODO_ENTRY_FROM_DB", err, c)
+		return
+	}
+
+	content := gin.H{
+		"title": "To Do Update",
+		"year":  time.Now().Year(),
+		"todo":  todo,
+	}
+	c.HTML(http.StatusOK, "todo-update", content)
+}
+
+func PostTodoUpdate(c *gin.Context) {
+	id := c.PostForm("todoId")
+	title := c.PostForm("title")
+	description := c.PostForm("description")
+
+	val, err := strconv.Atoi(id)
+	if err != nil {
+		errorHandling("PARSE_TODO_ID", err, c)
+		return
+	}
+
+	todo := models.ToDo{
+		Title:       title,
+		Description: description,
+	}
+
+	err = helpers.Update(val, todo)
+	if err != nil {
+		errorHandling("UPDATE_TODO_ENTRY_TO_DB", err, c)
+		return
+	}
+	c.Redirect(http.StatusSeeOther, "/practice/todo")
+}
+
 func errorHandling(process string, err error, c *gin.Context) {
 	errInfo := gin.H{
 		"title":   "Error",
