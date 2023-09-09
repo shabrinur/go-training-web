@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func ShowIndex(c *gin.Context) {
+func ShowPracticeIndex(c *gin.Context) {
 	info := gin.H{
 		"title": "Index",
 		"year":  time.Now().Year(),

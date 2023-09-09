@@ -1,2 +1,2 @@
-# go-practice-gin
-Personal repository for basic Gin framework practice
+# go-practice-web
+Personal repository for practice building basic Go Web App

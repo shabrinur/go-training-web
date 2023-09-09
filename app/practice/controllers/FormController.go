@@ -43,6 +43,7 @@ func ShowResultPost(c *gin.Context) {
 		"formName": "Form A",
 		"input1":   input1,
 		"input2":   input2,
+		"formUri":  "/practice/form/post",
 		"year":     time.Now().Year(),
 	}
 
@@ -58,6 +59,7 @@ func ShowResultQuery(c *gin.Context) {
 		"formName": "Form B",
 		"input1":   input1,
 		"input2":   input2,
+		"formUri":  "/practice/form/query",
 		"year":     time.Now().Year(),
 	}
 
@@ -73,6 +75,7 @@ func ShowResultPath(c *gin.Context) {
 		"formName": "Form C",
 		"input1":   input1,
 		"input2":   input2,
+		"formUri":  "/practice/form/path",
 		"year":     time.Now().Year(),
 	}
 
