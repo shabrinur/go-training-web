@@ -4,6 +4,7 @@ import (
 	"idp-go/app/practice/helpers"
 	"idp-go/app/practice/models"
 	"net/http"
+	"strconv"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -12,13 +13,7 @@ import (
 func ShowTodoList(c *gin.Context) {
 	todos, err := helpers.GetList()
 	if err != nil {
-		errInfo := gin.H{
-			"title":   "Error",
-			"year":    time.Now().Year(),
-			"process": "GET_TODO_LIST_FROM_DB",
-			"message": err.Error(),
-		}
-		c.HTML(http.StatusInternalServerError, "todo-error", errInfo)
+		errorHandling("GET_TODO_LIST_FROM_DB", err, c)
 		return
 	}
 	content := gin.H{
@@ -48,14 +43,40 @@ func PostTodoCreate(c *gin.Context) {
 
 	err := helpers.Save(todo)
 	if err != nil {
-		errInfo := gin.H{
-			"title":   "Error",
-			"year":    time.Now().Year(),
-			"process": "SAVE_TODO_ENTRY_TO_DB",
-			"message": err.Error(),
-		}
-		c.HTML(http.StatusInternalServerError, "todo-error", errInfo)
+		errorHandling("SAVE_TODO_ENTRY_TO_DB", err, c)
 		return
 	}
 	c.Redirect(http.StatusSeeOther, "/practice/todo")
+}
+
+func ViewTodoDetail(c *gin.Context) {
+	id := c.Param("todoId")
+	val, err := strconv.Atoi(id)
+	if err != nil {
+		errorHandling("PARSE_TODO_ID", err, c)
+		return
+	}
+
+	todo, err := helpers.Get(val)
+	if err != nil {
+		errorHandling("GET_TODO_ENTRY_FROM_DB", err, c)
+		return
+	}
+
+	content := gin.H{
+		"title": "To Do Detail",
+		"year":  time.Now().Year(),
+		"todo":  todo,
+	}
+	c.HTML(http.StatusOK, "todo-detail", content)
+}
+
+func errorHandling(process string, err error, c *gin.Context) {
+	errInfo := gin.H{
+		"title":   "Error",
+		"year":    time.Now().Year(),
+		"process": process,
+		"message": err.Error(),
+	}
+	c.HTML(http.StatusInternalServerError, "todo-error", errInfo)
 }
