@@ -18,6 +18,8 @@ func SetupPracticeRouter(router *gin.Engine, render multitemplate.Renderer) (*gi
 	// call routing for sample forms
 	router = setRoutingForSampleForms(router)
 
+	router = setRoutingForToDoPages(router)
+
 	// call practice pages render
 	render = renderPracticeTemplates(render)
 
@@ -37,6 +39,12 @@ func setRoutingForSampleForms(r *gin.Engine) *gin.Engine {
 	return r
 }
 
+func setRoutingForToDoPages(r *gin.Engine) *gin.Engine {
+	r.GET("/practice/todo", controllers.ShowTodoList)
+
+	return r
+}
+
 func renderPracticeTemplates(render multitemplate.Renderer) multitemplate.Renderer {
 
 	layoutPath := "app/practice/templates/layout.tmpl"
@@ -47,12 +55,13 @@ func renderPracticeTemplates(render multitemplate.Renderer) multitemplate.Render
 
 	render.AddFromFiles("post", layoutPath, viewPath+"/form/form-post.html")
 	render.AddFromFiles("result-post", layoutPath, viewPath+"/form/result.html")
-
 	render.AddFromFiles("query", layoutPath, viewPath+"/form/form-query.html")
 	render.AddFromFiles("result-query", layoutPath, viewPath+"/form/result.html")
-
 	render.AddFromFiles("path", layoutPath, viewPath+"/form/form-path.html")
 	render.AddFromFiles("result-path", layoutPath, viewPath+"/form/result.html")
+
+	render.AddFromFiles("todo-list", layoutPath, viewPath+"/todo/todo-list.html")
+	render.AddFromFiles("todo-error", layoutPath, viewPath+"/todo/todo-error.html")
 
 	render.AddFromFiles("contact", layoutPath, viewPath+"/contact.html")
 	return render

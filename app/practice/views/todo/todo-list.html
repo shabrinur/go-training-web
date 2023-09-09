@@ -1,0 +1,36 @@
+{{define "content"}}
+    <h1>To Do List</h1>
+    <table class="table table-striped mt-4">
+        <thead>
+            <tr>
+                <th class="d-none">ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ range .todos }}
+                <tr>
+                    <td class="d-none">{{ .ID }}</td>
+                    <td>{{ .Title }}</td>
+                    <td>{{ .Description }}</td>
+                    <td>
+                        <a href="/practice/todo/{{ .ID }}" class="btn btn-sm btn-info">View</a>
+                        <a href="/practice/todo/{{ .ID }}/edit" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="/practice/todo/delete" method="POST" style="display: inline;">
+                            <input type="hidden" name="todoId" value="{{ .ID }}">
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {{ end }}
+        </tbody>
+    </table>
+    <div class="mt-4">
+        <a href="/practice/todo/create" class="btn btn-primary">Add Entry</a>
+    </div>
+{{end}}
+
+{{define "script"}}
+{{end}}
