@@ -15,6 +15,9 @@ func main() {
 	// setup routing & render for practice pages
 	router, render = routers.SetupPracticeRouter(router, render)
 
+	// setup routing & render for assignment pages
+	router, render = routers.SetupTaskRouter(router, render)
+
 	// load asset
 	router.Static("/assets", "./assets")
 

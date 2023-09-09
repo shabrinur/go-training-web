@@ -10,10 +10,9 @@ import (
 func SetupPracticeRouter(router *gin.Engine, render multitemplate.Renderer) (*gin.Engine, multitemplate.Renderer) {
 
 	// set routing for main pages
-	router.GET("/", controllers.ShowPracticeIndex)
-	router.GET("/practice", controllers.ShowPracticeIndex)
-	router.GET("/practice/contact", controllers.ShowContact)
+	router.GET("/practice", controllers.ShowAbout)
 	router.GET("/practice/about", controllers.ShowAbout)
+	router.GET("/practice/contact", controllers.ShowContact)
 
 	// call routing for sample forms
 	router = setRoutingForSampleForms(router)
@@ -60,7 +59,6 @@ func renderPracticeTemplates(render multitemplate.Renderer) multitemplate.Render
 	layoutPath := "app/practice/templates/layout.tmpl"
 	viewPath := "app/practice/views"
 
-	render.AddFromFiles("index", layoutPath, viewPath+"/index.html")
 	render.AddFromFiles("about", layoutPath, viewPath+"/about.html")
 
 	render.AddFromFiles("post", layoutPath, viewPath+"/form/form-post.html")

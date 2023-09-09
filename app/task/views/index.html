@@ -1,0 +1,14 @@
+{{define "content"}}
+    <h1>Welcome to My Assignment Web</h1>
+    
+    <!-- Send Value on Body -->
+    <form class="container" action="/welcome" method="POST">
+        <div class="mb-3">
+            <label for="inputName" class="form-label">Please enter your name here :)</label>
+            <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Enter your name here">
+        </div>
+        <div class="mb-4">
+            <button type="submit" class="btn btn-primary mt-4">Submit</button>
+        </div>
+    </form>
+{{end}}
